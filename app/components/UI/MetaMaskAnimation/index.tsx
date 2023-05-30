@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, import/no-commonjs */
 import React from 'react';
-import { Animated, Dimensions, View, StyleSheet, Platform } from 'react-native';
+import { Animated, Dimensions, View, StyleSheet, Platform,Image } from 'react-native';
 import PropTypes from 'prop-types';
 import LottieView from 'lottie-react-native';
 import { useTheme, useAssetFromTheme } from '../../../util/theme';
@@ -77,7 +77,7 @@ const MetaMaskAnimation = ({
             style={styles.foxAndName}
             {...generateTestId(Platform, SPLASH_SCREEN_METAMASK_ANIMATION_ID)}
           >
-            <LottieView
+            {/* <LottieView
               autoPlay={false}
               ref={animationRef}
               style={styles.animation}
@@ -85,12 +85,14 @@ const MetaMaskAnimation = ({
               // eslint-disable-next-line
               source={require('../../../animations/fox-in.json')}
               onAnimationFinish={onAnimationFinish}
-            />
+            /> */}
+             <Image source={require('../../../images/panacea-logo.png')}></Image>
             <LottieView
               autoPlay={false}
               ref={animationName}
               style={styles.metamaskName}
               loop={false}
+              onAnimationFinish={onAnimationFinish}
               // eslint-disable-next-line
               source={wordmark}
             />
