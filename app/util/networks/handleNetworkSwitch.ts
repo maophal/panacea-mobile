@@ -26,7 +26,7 @@ const handleNetworkSwitch = (
   const rpc = frequentRpcList.find(
     ({ chainId }: { chainId: string }) => chainId === switchToChainId,
   );
-
+console.log(rpc,'rpc');
   if (rpc) {
     const { rpcUrl, chainId, ticker, nickname } = rpc;
     currencyRateController.setNativeCurrency(ticker);

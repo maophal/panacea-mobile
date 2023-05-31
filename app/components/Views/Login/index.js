@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent,useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
   Alert,
@@ -65,7 +65,7 @@ import { parseVaultValue } from '../../../util/validators';
 import { getVaultFromBackup } from '../../../core/BackupVault';
 import { containsErrorMessage } from '../../../util/errorHandling';
 import { MetaMetricsEvents } from '../../../core/Analytics';
-
+import ReactNativePinView from 'react-native-pin-view'
 const deviceHeight = Device.getDeviceHeight();
 const breakPoint = deviceHeight < 700;
 
@@ -84,7 +84,7 @@ const createStyles = (colors) =>
       alignSelf: 'center',
       width: Device.isIos() ? 130 : 100,
       height: Device.isIos() ? 130 : 100,
-      marginTop: 100,
+      marginTop: 10,
     },
     image: {
       alignSelf: 'center',
@@ -256,6 +256,7 @@ class Login extends PureComponent {
   };
 
   fieldRef = React.createRef();
+  pinViewRef = React.createRef();
 
   async componentDidMount() {
     trackEvent(MetaMetricsEvents.LOGIN_SCREEN_VIEWED);
@@ -297,7 +298,12 @@ class Login extends PureComponent {
       });
     }
   }
-
+  componentDidUpdate(prevProps) {
+    if(this.state.password.length == 4 && this.state.error == null) {
+        // console.log(prevProps,'prevProps');
+      this.triggerLogIn();
+    }
+  }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
   }
@@ -548,8 +554,8 @@ class Login extends PureComponent {
                 {strings('login.title')}
               </Text>
               <View style={styles.field}>
-                <Text style={styles.label}>{strings('login.password')}</Text>
-                <OutlinedTextField
+                {/* <Text style={styles.label}>{strings('login.password')}</Text> */}
+                {/* <OutlinedTextField
                   style={styles.input}
                   placeholder={strings('login.password')}
                   placeholderTextColor={colors.text.muted}
@@ -572,7 +578,33 @@ class Login extends PureComponent {
                     />
                   )}
                   keyboardAppearance={themeAppearance}
-                />
+                /> */}
+                 <ReactNativePinView pinLength={4}  buttonSize={60} inputSize={32}
+            inputAreaStyle={{
+              marginBottom: 24,
+            }}
+            // onButtonPress={this.setPassword}
+            onValueChange={this.setPassword}
+            
+            inputViewEmptyStyle={{
+              backgroundColor: "#FFF",
+              borderWidth: 1,
+              borderColor: "gray",
+            }}
+            inputViewFilledStyle={{
+              backgroundColor: "black"
+            }}
+            buttonViewStyle={{
+              borderWidth: 1,
+              borderColor: "gray",
+              borderWidth:1
+            }}
+            buttonTextStyle={{
+              color: "black",
+              borderColor:"red",
+              borderWidth:1,
+              borderRadius: 50
+            }}  ref={this.pinViewRef} />
               </View>
 
               {this.renderSwitch()}
@@ -582,7 +614,7 @@ class Login extends PureComponent {
                   {this.state.error}
                 </Text>
               )}
-              <View
+              {/* <View
                 style={styles.ctaWrapper}
                 testID={'log-in-button'}
                 {...generateTestId(Platform, LOGIN_VIEW_UNLOCK_BUTTON_ID)}
@@ -597,7 +629,7 @@ class Login extends PureComponent {
                     strings('login.unlock_button')
                   )}
                 </StyledButton>
-              </View>
+              </View> */}
 
               <View style={styles.footer}>
                 <Text style={styles.cant}>{strings('login.go_back')}</Text>

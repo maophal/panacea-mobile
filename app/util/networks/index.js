@@ -288,6 +288,7 @@ export const getNetworkNonce = async ({ from }) => {
 };
 
 export function blockTagParamIndex(payload) {
+  console.log(payload,'payload');
   switch (payload.method) {
     // blockTag is at index 2
     case 'eth_getStorageAt':

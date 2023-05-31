@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-require-imports, import/no-commonjs */
 const InfuraKey = process.env.MM_INFURA_PROJECT_ID;
+console.log(InfuraKey,'infuraKey phal');
 const infuraProjectId = InfuraKey === 'null' ? '' : InfuraKey;
 
 const PopularList = [
   {
     chainId: '43114',
     nickname: 'Avalanche Mainnet C-Chain',
-    rpcUrl: 'https://api.avax.network/ext/bc/C/rpc',
+    rpcUrl: 'https://avalanche.rpc.thirdweb.com',
     ticker: 'AVAX',
     warning: true,
     rpcPrefs: {
@@ -29,7 +30,7 @@ const PopularList = [
   {
     chainId: '56',
     nickname: 'BNB Smart Chain',
-    rpcUrl: 'https://bsc-dataseed1.binance.org',
+    rpcUrl: 'https://bsc-dataseed.binance.org/',
     ticker: 'BNB',
     warning: true,
     rpcPrefs: {
@@ -76,7 +77,7 @@ const PopularList = [
   {
     chainId: '137',
     nickname: 'Polygon Mainnet',
-    rpcUrl: `https://polygon-mainnet.infura.io/v3/${infuraProjectId}`,
+    rpcUrl: `https://polygon.rpc.thirdweb.com`,
     ticker: 'MATIC',
     rpcPrefs: {
       blockExplorerUrl: 'https://polygonscan.com',

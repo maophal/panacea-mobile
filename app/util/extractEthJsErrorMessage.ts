@@ -13,6 +13,7 @@ const errorLabelPrefix = 'Error: ';
  */
 export default function extractEthjsErrorMessage(errorMessage: string) {
   const isEthjsRpcError = errorMessage.includes(ethJsRpcSlug);
+  console.log(errorMessage,'phal');
   if (isEthjsRpcError) {
     const payloadAndError = errorMessage.slice(ethJsRpcSlug.length);
     const originalError = payloadAndError.slice(

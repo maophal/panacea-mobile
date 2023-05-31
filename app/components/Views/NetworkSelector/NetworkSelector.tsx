@@ -140,6 +140,7 @@ const NetworkSelector = () => {
     }
 
     const { rpcUrl, chainId, ticker, nickname } = rpc;
+    console.log(rpcUrl,'rpcUrl');
 
     CurrencyRateController.setNativeCurrency(ticker);
 
@@ -165,7 +166,7 @@ const NetworkSelector = () => {
           imageSource: images.ETHEREUM,
         }}
         isSelected={chainId.toString() === providerConfig.chainId}
-        // onPress={() => onNetworkChange(MAINNET)}
+        onPress={() => onNetworkChange(MAINNET)}
       />
     );
   };
@@ -175,6 +176,7 @@ const NetworkSelector = () => {
       ({ chainId }: { chainId: string }) =>
         chainId !== NETWORKS_CHAIN_ID.LINEA_TESTNET,
     );
+    console.log(rpcList,'rpclist');
 
     return rpcList.map(
       ({
