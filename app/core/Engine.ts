@@ -105,6 +105,8 @@ class Engine {
         }),
       };
 
+      console.log(networkControllerOpts,'networkControllerOpts');
+
       const networkController = new NetworkController(networkControllerOpts);
       // This still needs to be set because it has the side-effect of initializing the provider
       networkController.providerConfig = {};

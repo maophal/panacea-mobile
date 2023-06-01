@@ -165,7 +165,7 @@ const NetworkSelector = () => {
           imageSource: images.ETHEREUM,
         }}
         isSelected={chainId.toString() === providerConfig.chainId}
-        // onPress={() => onNetworkChange(MAINNET)}
+        onPress={() => onNetworkChange(MAINNET)}
       />
     );
   };

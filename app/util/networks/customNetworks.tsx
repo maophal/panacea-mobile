@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports, import/no-commonjs */
 const InfuraKey = process.env.MM_INFURA_PROJECT_ID;
 const infuraProjectId = InfuraKey === 'null' ? '' : InfuraKey;
-
+console.log(InfuraKey,'infuraKEy')
 const PopularList = [
   {
     chainId: '43114',
@@ -76,7 +76,7 @@ const PopularList = [
   {
     chainId: '137',
     nickname: 'Polygon Mainnet',
-    rpcUrl: `https://polygon-mainnet.infura.io/v3/${infuraProjectId}`,
+    rpcUrl: `https://polygon-rpc.com`,
     ticker: 'MATIC',
     rpcPrefs: {
       blockExplorerUrl: 'https://polygonscan.com',
