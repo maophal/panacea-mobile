@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, import/no-commonjs */
 import React from 'react';
-import { Animated, Dimensions, View, StyleSheet, Platform,Image } from 'react-native';
+import { Animated, Dimensions, View, StyleSheet, Platform,Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import LottieView from 'lottie-react-native';
 import { useTheme, useAssetFromTheme } from '../../../util/theme';
@@ -21,11 +21,12 @@ const createStyles = (colors: any) =>
     },
     metamaskName: {
       marginTop: 10,
-      height: 25,
-      width: 170,
+      height: 50,
+      width: 190,
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
+      fontSize:40
     },
     logoWrapper: {
       paddingTop: 50,
@@ -68,7 +69,9 @@ const MetaMaskAnimation = ({
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const wordmark = useAssetFromTheme(wordmarkLight, wordmarkDark);
-
+  setTimeout(() => {
+    onAnimationFinish();
+  },500)
   return (
     <View style={styles.main}>
       <Animated.View style={[styles.logoWrapper, { opacity }]}>
@@ -87,7 +90,8 @@ const MetaMaskAnimation = ({
               onAnimationFinish={onAnimationFinish}
             /> */}
              <Image source={require('../../../images/panacea-logo.png')}></Image>
-            <LottieView
+             <Text style={styles.metamaskName}>PANACEA</Text>
+            {/* <LottieView
               autoPlay={false}
               ref={animationName}
               style={styles.metamaskName}
@@ -95,7 +99,7 @@ const MetaMaskAnimation = ({
               onAnimationFinish={onAnimationFinish}
               // eslint-disable-next-line
               source={wordmark}
-            />
+            /> */}
           </View>
         </View>
       </Animated.View>
