@@ -9,6 +9,7 @@ import {
   BackHandler,
   InteractionManager,
   Platform,
+  Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { fontStyles } from '../../../styles/common';
@@ -37,6 +38,7 @@ import {
   PROTECT_YOUR_WALLET_CONTAINER_ID,
   REMIND_LATER_BUTTON_ID,
 } from '../../../../wdio/screen-objects/testIDs/Screens/WalletSetupScreen.testIds';
+import imgSecurityStep1 from "../../../images/security-step-1.jpg";
 const createStyles = (colors) =>
   StyleSheet.create({
     mainWrapper: {
@@ -227,7 +229,11 @@ const AccountBackupStep1 = (props) => {
             <Text style={styles.title}>
               {strings('account_backup_step_1.title')}
             </Text>
-            <SeedPhraseVideo onClose={skip} />
+            {/* <SeedPhraseVideo onClose={skip} /> */}
+            <Image source={imgSecurityStep1} style={{
+              alignSelf: 'center',
+              width: Device.isIos() ? "100%" : "100%",
+              height: Device.isIos() ? 240 : 240}}></Image>
             <View style={styles.text}>
               <Text style={styles.label}>
                 {strings('account_backup_step_1.info_text_1_1')}{' '}
