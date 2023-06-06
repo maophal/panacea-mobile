@@ -47,7 +47,7 @@ const main = async () => {
       imageModulesPath,
       `\n  ${isBlacklisted ? '//' : ''}'${
         token.logo
-      }': require('metamask/node_modules/@metamask/contract-metadata/images/${
+      }': require('/Users/phal/.Projects/panacea-wallet/node_modules/@metamask/contract-metadata/images/${
         token.logo
       }'),`,
     );

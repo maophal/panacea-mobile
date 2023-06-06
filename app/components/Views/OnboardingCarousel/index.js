@@ -46,6 +46,7 @@ const createStyles = (colors) =>
     wrapper: {
       paddingVertical: 30,
       flex: 1,
+      // backgroundColor:'#57375a'
     },
     title: {
       fontSize: 24,
